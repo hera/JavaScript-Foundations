@@ -138,6 +138,27 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 
+function variableInterestRate(principal, interestRate, years) {
+    interestRate -= 0.02;
+    const periods = years * 12;
+
+    for(let i = 0; i < 10; i++) {
+        let monthlyInterestRate = interestRate / 12;
+        let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+        let result = (principal * numerator / denominator).toFixed();
+
+        console.log(`${name}, with an interest rate of ${interestRate.toFixed(3)}, your monthly rate is $${result}`);
+
+        interestRate += 0.005;
+    }
+}
+
+
+
+variableInterestRate(200000, 0.04, 30);
+
+
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
